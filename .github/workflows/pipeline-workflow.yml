@@ -66,7 +66,7 @@ jobs:
         creds: ${{secrets.AZURE_CREDENTIALS}}
           
   create-endpoint:
-      needs: get-config
+      needs: [get-config,run-pipeline]
       uses: Azure/mlops-templates/.github/workflows/create-endpoint.yml@main
       with:
         resource_group: ${{ needs.get-config.outputs.resource_group }}
